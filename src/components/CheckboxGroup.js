@@ -2,7 +2,7 @@ import React from "react";
 import {ErrorMessage, Field} from "formik";
 import TextError from "./TextError";
 
-function CheckBoxes(props) {
+function CheckboxGroup(props) {
     const {label, name, options, ...rest} = props;
 
     return (
@@ -13,7 +13,7 @@ function CheckBoxes(props) {
                     ({field}) => options.map(option => {
                         return (
                             <React.Fragment key={option.key}>
-                                <input type="radio" id={option.id} {...field} value={option.value} checked={field.value === option.value}/>
+                                <input type="checkbox" id={option.id} {...field} value={option.value} checked={field.value.includes(option.value)}/>
                                 <label htmlFor={option.value}>{option.key}</label>
                             </React.Fragment>
                         )
@@ -25,4 +25,4 @@ function CheckBoxes(props) {
     )
 }
 
-export default CheckBoxes;
+export default CheckboxGroup;
